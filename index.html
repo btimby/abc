@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Atypes, Btypes, and Ctypes</title>
+		<title>Atypes, Btypes, and ctypes</title>
 
-		<meta name="description" content="Atypes, Btypes, and Ctypes">
+		<meta name="description" content="Atypes, Btypes, and ctypes">
 		<meta name="author" content="Ben Timby">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,8 +55,8 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Atypes, Btypes, and Ctypes</h1>
-					<h3>Introduction to using C in Python</h3>
+					<h1>Atypes, Btypes, and ctypes</h1>
+					<h4>Introduction to using C in Python</h4>
 					<p>
 						<small>presented by <a href="http://ben.timby.com/">Ben Timby</a> / <a href="mailto:btimby@smartfile.com">btimby@smartfile.com</a></small>
 					</p>
@@ -65,10 +65,10 @@
                                         * Hi I am Ben Timby.
                                         * I live in Indiana, but was born in Ohio, it feels good to be back!
                                         * I work for SmartFile, we develop a Python web application. We have the opportunity to use a LOT of open source code.
-                                        * For my day job I have utilized Ctypes (the topic) for a variety of tasks.
+                                        * For my day job I have utilized ctypes (the topic) for a variety of tasks.
                                         * I have also used SWIG.
                                         * I have manually written wrappers for C libraries using the CPython API.
-                                        * I perfer Ctypes!
+                                        * I perfer ctypes!
                                         </aside>
 				</section>
 
@@ -80,37 +80,64 @@
                                                 <img src="/img/strange-hammer.jpg"/>
                                             </div>
                                             <div class="right_col">
-                                                <ul>
-                                                    <li>Ctypes is a tool you don't need every day.</li>
-                                                    <li>Indispensible when you do need it.</li>
-                                                    <li>Extend Python using C.</li>
-                                                    <li>Use existing C libraries.</li>
-                                                    <li>Or write your own.</li>
-                                                </ul>
+                                                <span>
+                                                    <p>Ctypes is a tool you don't need every day, but it is indispensible when you do need it.</p>
+                                                </span>
+                                                <span class="fragment">
+                                                    <hr/>
+                                                    <p>Use ctypes to utilize C libraries from Python.</p>
+                                                </span>
+                                                <span class="fragment">
+                                                    <hr/>
+                                                    <p>Call existing libraries or write your own.</p>
+                                                </span>
+                                                <!--<ul>
+                                                    <li class="fragment">ctypes is a tool you don't need every day.</li>
+                                                    <li class="fragment">Indispensible when you do need it.</li>
+                                                    <li class="fragment">Integrate Python &amp; C.</li>
+                                                    <li class="fragment">Use existing C libraries.</li>
+                                                    <li class="fragment">Or write your own.</li>
+                                                </ul>-->
                                             </div>
                                         </div>
 
                                         <aside class="notes" data-markdown>
-                                        * Ctypes is a powerful tool that you should know how to use.
-                                        * Ctypes like Python is simple for simple tasks, but can scale up to more difficult tasks.
-                                        * Ctypes is an FFI (Foreign Function Interface) allowing Python and C code to interact.
-                                        * As the name implies, Ctypes is mostly concerned with translating between Python types and C types.
+                                        * ctypes is a powerful tool that you should know how to use.
+                                        * ctypes like Python is simple for simple tasks, but can scale up to more difficult tasks.
+                                        * ctypes is an FFI (Foreign Function Interface) allowing Python and C code to interact.
+                                        * As the name implies, ctypes is mostly concerned with translating between Python types and C types.
                                         * It also handles C calling conventions.
                                         * You can call C functions. C functions can also call Python functions (callbacks).
                                         </aside>
 				</section>
 
-				<!-- Example of nested vertical slides -->
 				<section>
 					<h2>Who?</h2>
 
                                         <div class="wrap">
                                             <div class="left_col">
-                                                <ul>
-                                                    <li>You! Ctypes is already installed (2.5 and up).</li>
-                                                    <li>Stdlib modules multiprocessing and uuid use ctypes.</li>
-                                                    <li>Ctypes is simple for Python programmers to learn.</li>
-                                                </ul>
+                                                <span class="fragment">
+                                                    <h3>YOU!</h3>
+                                                </span>
+                                                <span class="fragment">
+                                                    <hr/>
+                                                    <p>Ctypes is already installed (Python 2.5+).</p>
+                                                </span>
+                                                <span class="fragment">
+                                                    <hr/>
+                                                    <p>Stdlib modules multiprocessing and uuid use ctypes.</p>
+                                                </span>
+                                                <span class="fragment">
+                                                    <hr/>
+                                                    <p>Ctypes is simple for Python programmers to learn.</p>
+                                                </span>
+
+                                                <!--<ul>
+                                                    <li class="fragment">You!</li>
+                                                    <li class="fragment">ctypes is already installed (Python 2.5+).</li>
+                                                    <li class="fragment">Stdlib modules multiprocessing and uuid use ctypes.</li>
+                                                    <li class="fragment">ctypes is simple for Python programmers to learn.</li>
+                                                </ul>-->
                                             </div>
                                             <div class="right_col">
                                                 <img src="/img/who-md.png"/>
@@ -118,281 +145,296 @@
                                         </div>
 
                                         <aside class="notes" data-markdown>
-                                        * Hopefully after today, you will run into a problem that Ctypes can help you overcome.
+                                        * Hopefully after today, you will run into a problem that ctypes can help you overcome.
                                         * I want to give you enough information so that you can get started
                                         </aside>
 				</section>
 
-				<section>
-                                    <section>
-					<h2>Why?</h2>
+                                <section>
+                                    <h2>Why?</h2>
 
-                                        <div class="wrap">
-                                            <div class="left_col">
-                                                <ul>
-                                                    <li>Execution speed.</li>
-                                                    <li>Don't reinvent the wheel.</li>
-                                                    <li>Legacy systems / code.</li>
-                                                </ul>
-                                            </div>
-                                            <div class="right_col">
-                                                <img src="/img/who-md.png"/>
-                                            </div>
+                                    <div class="wrap">
+                                        <div class="left_col">
+                                                <span class="fragment">
+                                                    <p>There are thousands of C libraries for almost every purpose.</p>
+                                                </span>
+                                                <span class="fragment">
+                                                    <hr/>
+                                                    <p>Why not use them?</p>
+                                                </span>
+                                                <span class="fragment">
+                                                    <hr/>
+                                                    <p>Performance benefits.</p>
+                                                </span>
+                                                <span class="fragment">
+                                                    <hr/>
+                                                    <p>Interface with legacy systems &amp; code.</p>
+                                                </span>
+                                            <!--<ul>
+                                                <li class="fragment">Don't reinvent the wheel.</li>
+                                                <li class="fragment">Execution speed.</li>
+                                                <li class="fragment">Legacy systems / code.</li>
+                                            </ul>-->
                                         </div>
-
-                                        <aside class="notes" data-markdown>
-                                        * Sometimes through profiling you identify performance trouble spots.
-                                        * Optimized algorithms are already implemented in C.
-                                        * Ctypes can allow you to call that C algorithm.
-                                        * C is an old programming language.
-                                        * There are thousands of mature C libraries.
-                                        * You may need to integrate with a legacy system.
-                                        * If the legacy system utilizes a library (it should!) you can load and call it.
-                                        * Bring old programs to the Web (2.0) era!
-                                        </aside>
-                                    </section>
-
-                                    <section>
-					<h2>Why Not?</h2>
-
-                                        <div class="wrap">
-                                            <div class="left_col">
-                                                <ul>
-                                                    <li>There are many options that do similar things.</li>
-                                                    <li>Why choose Ctypes over these options?</li>
-                                                </ul>
-                                            </div>
-                                            <div class="right_col">
-                                                <ul>
-                                                    <li>Ctypes</li>
-                                                    <li>Pyrex</li>
-                                                    <li>SWIG</li>
-                                                    <li>Cython</li>
-                                                    <li>psyco</li>
-                                                    <li>weave</li>
-                                                </ul>
-                                            </div>
+                                        <div class="right_col">
+                                            <img src="/img/shoe-wheel.jpg"/>
                                         </div>
+                                    </div>
 
-                                        <aside class="notes" data-markdown>
-                                        * Ctypes is not the only game in town.
-                                        </aside>
-                                    </section>
-
-                                    <section>
-                                        <h2>Why SWIG instead of Ctypes?</h2>
-                                        
-                                        <div class="wrap">
-                                            <div class="left_col">
-                                                <h3>Pros</h3>
-                                                <ul>
-                                                    <li>Multiply your effort by targeting many languages at once.</li>
-                                                    <li>Port existing wrapper from another language.</li>
-                                                </ul>
-                                            </div>
-                                            <div class="right_col">
-                                                <h3>Cons</h3>
-                                                <ul>
-                                                    <li>Generated C code is ugly.</li>
-                                                    <li>A lot of work if you only need to support Python.</li>
-                                                    <li>Specialized syntax for defining interface.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <aside class="notes" data-markdown>
-                                        * SWIG is the clear choice if you need to generate wrappers for more than just Python.
-                                        * You can leverage other people's work by converting an existing SWIG wrapper to Python.
-                                        * The C code that SWIG generates is not fit for human consumption (could be hard to debug).
-                                        * Thankfully it is usually short and repetitive.
-                                        * If you are only supporting Python, it is like using a sledgehammer.
-                                        * SWIG uses a C-like syntax for defining the C library's interface.
-                                        * Yet there are many SWIG specific concepts you must learn.
-                                        </aside>
-                                    </section>
-
-                                    <section>
-                                        <h2>Why Cython instead of Ctypes?</h2>
-                                        
-                                        <div class="wrap">
-                                            <div class="left_col">
-                                                <h3>Pros</h3>
-                                                <ul>
-                                                    <li>Cython can execute faster than Ctypes.</li>
-                                                    <li>Not only C code but also Python code.</li>
-                                                </ul>
-                                            </div>
-                                            <div class="right_col">
-                                                <h3>Cons</h3>
-                                                <ul>
-                                                    <li>Specialized Python-esque syntax.</li>
-                                                    <li>Requires compilation.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <aside class="notes" data-markdown>
-                                        * If execution speed is your goal then Cython may be the right choice.
-                                        * Cython translates Python code to C code then compiles it.
-                                        * Once Python is compiled, calling C libraries is trivial.
-                                        * Cython uses a Python-like syntax that will take some getting used to.
-                                        * Cython compilation to achieve what Ctypes can without.
-                                        </aside>
-                                    </section>
-
-                                    <section>
-                                        <h2>Why Ctypes instead SWIG/Cython?</h2>
-                                        
-                                        <div class="wrap">
-                                            <div class="left_col">
-                                                <h3>Pros</h3>
-                                                <ul>
-                                                    <li>Ease of use.</li>
-                                                    <li>Rapid development.</li>
-                                                </ul>
-                                            </div>
-                                            <div class="right_col">
-                                                <h3>Cons</h3>
-                                                <ul>
-                                                    <li>
-                                                        Execution speed.
-                                                        <ul>
-                                                            <li>FFI incurs overhead for every function call.</li>
-                                                            <li>Pre-compiled boundaries are faster.</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>Python only.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <aside class="notes" data-markdown>
-                                        * You can start using Ctypes today.
-                                        * A simple task is trivial using Ctypes.
-                                        * The border between Python and C requires a lot of processing.
-                                        * Each function call incurs overhead.
-                                        * To mitigate this penalty, move tight loops to C, write your own intermediate library, and call that.
-                                        * Ctypes only addresses Python.
-                                        * However, even if you plan on using SWIG or Cython, Ctypes may be a great way to plan / prototype.
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * Sometimes through profiling you identify performance trouble spots.
+                                    * Optimized algorithms are already implemented in C.
+                                    * ctypes can allow you to call that C algorithm.
+                                    * C is an old programming language.
+                                    * There are thousands of mature C libraries.
+                                    * You may need to integrate with a legacy system.
+                                    * If the legacy system utilizes a library (it should!) you can load and call it.
+                                    * Bring old programs to the Web (2.0) era!
+                                    </aside>
                                 </section>
 
-				<section>
-                                    <section>
-                                        <h2>How?</h2>
+                                <section>
+                                    <h2>Why Not?</h2>
+                                    <h4>ctypes is not always the right choice</h4>
 
-                                        <div class="wrap">
-                                            <div class="left_col">
-                                                <ul>
-                                                    <li>Research your target.</li>
-                                                    <li>Dip your toe in.</li>
-                                                    <li>Plan your attack.</li>
-                                                    <li>Write unit tests.</li>
-                                                    <li>Blitzkrieg!</li>
-                                                </ul>
-                                            </div>
-                                            <div class="right_col">
-                                                <img src="/img/target.png"/>
-                                            </div>
+                                    <div class="wrap">
+                                        <div class="left_col">
+                                                <span>
+                                                    <p>There are many competing tools.</p>
+                                                </span>
+                                                <span class="fragment" data-fragment-index="2">
+                                                    <hr/>
+                                                    <p>Why would I choose ctypes?</p>
+                                                </span>
+                                            <!--<ul>
+                                                <li>There are many options that do similar things.</li>
+                                                <li class="fragment" data-fragment-index="2">Why choose ctypes over these options?</li>
+                                            </ul>-->
                                         </div>
-
-                                        <aside class="notes" data-markdown>
-                                        * want to give you a bit of 
-                                        * Research your target.
-                                            * Find example projects using it.
-                                            * Read documentation.
-                                            * Write a simple C program that uses the library.
-                                        * Dip your toe in.
-                                            * Try loading the library using Ctypes.
-                                            * Initialize the library.
-                                            * Finalize the library.
-                                        * Plan your attack.
-                                            * Learn how the library operates.
-                                            * Learn how to handle errors.
-                                            * Determine which functions you plan to use.
-                                        * Write unit tests.
-                                            * Write a unit test for each function you will use.
-                                        * Blitzkreig!
-                                            * Implement your C wrapper.
-                                            * Unit tests start passing.
-                                        </aside>
-                                    </section>
-
-                                    <section>
-                                        <h2>Research your target</h2>
-                                        <h3>Librsync</h3>
-
-                                        <div class="wrap">
-                                            <div class="left_col">
-                                                <ul>
-                                                    <li>Mature library.</li>
-                                                    <li>Excellent documentation.</li>
-                                                    <li>Tons of examples.</li>
-                                                    <li>Very fast.</li>
-                                                    <li>Found unsuitable wrappers.</li>
-                                                </ul>
-                                            </div>
-                                            <div class="right_col">
-                                                <pre><code class="python" data-trim>
-$ yum install librsync
-$ yum install librsync-devel
-                                                </code></pre>
-                                            </div>
+                                        <div class="right_col">
+                                            <ul class="fragment" data-fragment-index="1">
+                                                <li>Pyrex</li>
+                                                <li>SWIG</li>
+                                                <li>Cython</li>
+                                                <li>psyco</li>
+                                                <li>weave</li>
+                                            </ul>
                                         </div>
+                                    </div>
 
-                                        <aside class="notes" data-markdown>
-                                        * My intention is to give a quick tutorial from start to finish.
-                                        * Not neccesarily teach about librsync specifically.
-                                        * Librsync is an excellent use-case for Ctypes.
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * ctypes is not the only game in town.
+                                    </aside>
+                                </section>
 
-                                    <section>
-                                        <h2>Dip your toe in</h2>
+                                <section>
+                                    <h2>Why SWIG instead of ctypes?</h2>
+                                    
+                                    <div class="wrap">
+                                        <div class="left_col">
+                                            <h3>Pros</h3>
+                                            <ul>
+                                                <li>Multiply your effort by targeting many languages at once.</li>
+                                                <li>Port existing wrapper from another language.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right_col">
+                                            <span class="fragment"><h3>Cons</h3>
+                                            <ul>
+                                                <li>Generated C code is ugly.</li>
+                                                <li>A lot of work if you only need to support Python.</li>
+                                                <li>Specialized syntax for defining interface.</li>
+                                            </ul></span>
+                                        </div>
+                                    </div>
 
-                                        <pre><code class="python" data-trim>
+                                    <aside class="notes" data-markdown>
+                                    * SWIG is the clear choice if you need to generate wrappers for more than just Python.
+                                    * You can leverage other people's work by converting an existing SWIG wrapper to Python.
+                                    * The C code that SWIG generates is not fit for human consumption (could be hard to debug).
+                                    * Thankfully it is usually short and repetitive.
+                                    * If you are only supporting Python, it is like using a sledgehammer.
+                                    * SWIG uses a C-like syntax for defining the C library's interface.
+                                    * Yet there are many SWIG specific concepts you must learn.
+                                    </aside>
+                                </section>
+
+                                <section>
+                                    <h2>Why Cython instead of ctypes?</h2>
+                                    
+                                    <div class="wrap">
+                                        <div class="left_col">
+                                            <h3>Pros</h3>
+                                            <ul>
+                                                <li>Cython can execute faster than ctypes.</li>
+                                                <li>Not only C code but also Python code.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right_col">
+                                            <span class="fragment"><h3>Cons</h3>
+                                            <ul>
+                                                <li>Specialized Python-esque syntax.</li>
+                                                <li>Requires compilation.</li>
+                                            </ul></span>
+                                        </div>
+                                    </div>
+
+                                    <aside class="notes" data-markdown>
+                                    * If execution speed is your goal then Cython may be the right choice.
+                                    * Cython translates Python code to C code then compiles it.
+                                    * Once Python is compiled, calling C libraries is trivial.
+                                    * Cython uses a Python-like syntax that will take some getting used to.
+                                    * Cython compilation to achieve what ctypes can without.
+                                    </aside>
+                                </section>
+
+                                <section>
+                                    <h2>Why ctypes instead SWIG/Cython?</h2>
+                                    
+                                    <div class="wrap">
+                                        <div class="left_col">
+                                            <h3>Pros</h3>
+                                            <ul>
+                                                <li>Ease of use.</li>
+                                                <li>Rapid development.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right_col">
+                                            <span class="fragment"><h3>Cons</h3>
+                                            <ul>
+                                                <li>
+                                                    Execution speed.
+                                                    <ul>
+                                                        <li>FFI incurs overhead for every function call.</li>
+                                                        <li>Pre-compiled boundaries are faster.</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Python only.</li>
+                                            </ul></span>
+                                        </div>
+                                    </div>
+
+                                    <aside class="notes" data-markdown>
+                                    * You can start using ctypes today.
+                                    * A simple task is trivial using ctypes.
+                                    * The border between Python and C requires a lot of processing.
+                                    * Each function call incurs overhead.
+                                    * To mitigate this penalty, move tight loops to C, write your own intermediate library, and call that.
+                                    * ctypes only addresses Python.
+                                    * However, even if you plan on using SWIG or Cython, ctypes may be a great way to plan / prototype.
+                                    </aside>
+                                </section>
+
+                                <section>
+                                    <h2>How?</h2>
+                                    <h4>Destroy problems with ctypes!</h4>
+
+                                    <div class="wrap">
+                                        <div class="left_col">
+                                            <ul>
+                                                <li class="fragment">Research your target.</li>
+                                                <li class="fragment">Skirmish.</li>
+                                                <li class="fragment">Tactics.</li>
+                                                <li class="fragment">Udder devastation!</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right_col">
+                                            <img src="/img/larry.png" bgcolor="white"/>
+                                        </div>
+                                    </div>
+
+                                    <aside class="notes" data-markdown>
+                                    * Research your target.
+                                        * Find example projects using it.
+                                        * Read documentation.
+                                        * Write a simple C program that uses the library.
+                                    * Skirmish.
+                                        * Try loading the library using ctypes.
+                                        * Initialize the library.
+                                        * Finalize the library.
+                                    * Tactics.
+                                        * Some common things you will need to do using ctypes.
+                                    * Udder devastation!
+                                        * Implement your C wrapper.
+                                        * Unit tests start passing.
+                                    </aside>
+                                </section>
+
+                                <section>
+                                    <h2>Research your target:</h2>
+                                    <h4>Librsync</h4>
+
+                                    <div class="wrap">
+                                        <div class="left_col">
+                                            <div class="lang"><strong>Fedora</strong></div>
+                                            <pre><code class="sh" data-trim>
+$ sudo yum install librsync
+$ sudo yum install librsync-devel
+                                            </code></pre>
+                                        </div>
+                                        <div class="right_col">
+                                            <ul>
+                                                <li class="fragment">Mature library.</li>
+                                                <li class="fragment">Excellent documentation.</li>
+                                                <li class="fragment">Tons of examples.</li>
+                                                <li class="fragment">Very fast.</li>
+                                                <li class="fragment">Found unsuitable wrappers.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <aside class="notes" data-markdown>
+                                    * My intention is to give a quick tutorial from start to finish.
+                                    * Not neccesarily teach about librsync specifically.
+                                    * Librsync is an excellent use-case for ctypes.
+                                    </aside>
+                                </section>
+
+                                <section>
+                                    <h2>Skirmish</h2>
+
+                                    <pre><code class="python" data-trim>
 import ctypes
 import ctypes.util
 
 _librsync = ctypes.cdll.LoadLibrary(ctypes.util.find_library('rsync'))
-                                        </code></pre>
+                                    </code></pre>
 
-                                        <aside class="notes" data-markdown>
-                                        * Import ctypes.
-                                        * ctypes.util contains find_library, which searches for installed libraries by name.
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * Import ctypes.
+                                    * ctypes.util contains find_library, which searches for installed libraries by name.
+                                    </aside>
+                                </section>
 
-                                    <section>
-                                        <h2>Dip your toe in</h2>
+                                <section>
+                                    <h2>Skirmish</h2>
 
-                                        <pre><code class="python" data-trim>
+                                    <pre><code class="python" data-trim>
 import ctypes
 import ctypes.util
 
 _librsync = ctypes.cdll.LoadLibrary(ctypes.util.find_library('rsync'))
 
 if __name__ == '__main__':
-    # rs_job_t* rs_sig_begin (size_t new_block_len, size_t strong_sum_len)
-    j = _rsync.rs_sig_begin(1024, 8)
-    # rs_result rs_job_free (rs_job_t *)
-    r = _rsync.rs_job_free(j)
-    print('Return code: %s' % r)
-                                        </code></pre>
-                                        <h3><font color="red">UH-OH!</font></h3>
+# rs_job_t* rs_sig_begin (size_t new_block_len, size_t strong_sum_len)
+j = _rsync.rs_sig_begin(2048, 8)
+# rs_result rs_job_free (rs_job_t *)
+r = _rsync.rs_job_free(j)
+print('Return code: %s' % r)
+                                    </code></pre>
+                                    <h4 class="fragment"><font color="red">UH-OH!</font></h4>
 
-                                        <aside class="notes" data-markdown>
-                                        * I added the C function definitions as comments.
-                                        * Ctypes automagically converts the types for you!
-                                        * However, there is a problem with this code!
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * I added the C function definitions as comments.
+                                    * ctypes automagically converts the types for you!
+                                    * However, there is a problem with this code!
+                                    </aside>
+                                </section>
 
-                                    <section>
-                                        <h2>WHEW!</h2>
+                                <section>
+                                    <h2>Skirmish</h2>
 
-                                        <pre><code class="python" data-trim>
+                                    <pre><code class="python" data-trim>
 import ctypes
 import ctypes.util
 
@@ -407,27 +449,27 @@ _librsync.rs_job_free.restype = ctypes.c_int
 _librsync.rs_job_free.argtypes = (ctypes.c_void_p, )
 
 if __name__ == '__main__':
-    j = _rsync.rs_sig_begin(1024, 8)
-    r = _rsync.rs_job_free(j)
-    print('Return code: %s' % r)
-                                        </code></pre>
+j = _rsync.rs_sig_begin(2048, 8)
+r = _rsync.rs_job_free(j)
+print('Return code: %s' % r)
+                                    </code></pre>
 
-                                        <aside class="notes" data-markdown>
-                                        * You need to define the function prototypes you plan to use.
-                                        * Assign types to the parameters and return value.
-                                        * This code would likely work as-is.
-                                        * As soon as you try to use it in a complex program it would likely fail.
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * You need to define the function prototypes you plan to use.
+                                    * Assign types to the parameters and return value.
+                                    * This code would likely work as-is.
+                                    * As soon as you try to use it in a complex program it would likely fail.
+                                    </aside>
+                                </section>
 
-                                    <section>
-                                        <h2>Plan your attack</h2>
-                                        <h3>Define constants</h3>
+                                <section>
+                                    <h2>Tactics</h2>
+                                    <h4>Defining constants</h4>
 
-                                        <div class="wrap">
-                                            <div class="left_col">
-                                                <div class="lang"><strong>C (header)</strong></div>
-                                                <pre><code class="c" data-trim>
+                                    <div class="wrap">
+                                        <div class="left_col">
+                                            <div class="lang"><strong>C (header)</strong></div>
+                                            <pre><code class="c" data-trim>
 typedef enum {
     RS_DONE =           0,
     RS_BLOCKED =        1,
@@ -436,36 +478,36 @@ typedef enum {
 
 #define RS_DEFAULT_STRONG_LEN 8
 #define RS_DEFAULT_BLOCK_LEN 2048
-                                                </code></pre>
-                                            </div>
-                                            <div class="right_col">
-                                                <div class="lang"><strong>Python</strong></div>
-                                                <pre><code class="python" data-trim>
+                                            </code></pre>
+                                        </div>
+                                        <div class="right_col">
+                                            <div class="lang"><strong>Python</strong></div>
+                                            <pre><code class="python" data-trim>
 RS_DONE = 0
 RS_BLOCKED = 1
 
 RS_DEFAULT_STRONG_LEN = 8
 RS_DEFAULT_BLOCK_LEN = 2048
-                                                </code></pre>
-                                            </div>
+                                            </code></pre>
                                         </div>
+                                    </div>
 
-                                        <aside class="notes" data-markdown>
-                                        * Most C libraries will use constants.
-                                        * You will need to redefine them in Python.
-                                        * You might pass them as parameters, or test return values against them.
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * Most C libraries will use constants.
+                                    * You will need to redefine them in Python.
+                                    * You might pass them as parameters, or test return values against them.
+                                    </aside>
+                                </section>
 
 
-                                    <section>
-                                        <h2>Plan your attack</h2>
-                                        <h3>Define structures</h3>
+                                <section>
+                                    <h2>Tactics</h2>
+                                    <h4>Defining structures</h4>
 
-                                        <div class="wrap">
-                                            <div class="left_col">
-                                                <div class="lang"><strong>C (header)</strong></div>
-                                                <pre><code class="c" data-trim>
+                                    <div class="wrap">
+                                        <div class="left_col">
+                                            <div class="lang"><strong>C (header)</strong></div>
+                                            <pre><code class="c" data-trim>
 struct rs_buffers_s {
     char *next_in;
     size_t avail_in;
@@ -474,11 +516,11 @@ struct rs_buffers_s {
     char *next_out;
     size_t avail_out;
 };
-                                                </code></pre>
-                                            </div>
-                                            <div class="right_col">
-                                                <div class="lang"><strong>Python</strong></div>
-                                                <pre><code class="python" data-trim>
+                                            </code></pre>
+                                        </div>
+                                        <div class="right_col">
+                                            <div class="lang"><strong>Python</strong></div>
+                                            <pre><code class="python" data-trim>
 class Buffer(ctypes.Structure):
     _fields_ = [
         ('next_in',
@@ -493,53 +535,56 @@ class Buffer(ctypes.Structure):
         ('avail_out',
             ctypes.c_size_t),
     ]
-                                                </code></pre>
-                                            </div>
+                                            </code></pre>
                                         </div>
+                                    </div>
 
-                                        <aside class="notes" data-markdown>
-                                        * Most C libraries will use structures.
-                                        * Structs are data types packed together in memory.
-                                        * Ctypes allows you to define these as classes.
-                                        * You can access the members as attributes.
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * Most C libraries will use structures.
+                                    * Structs are data types packed together in memory.
+                                    * ctypes allows you to define these as classes.
+                                    * You can access the members as attributes.
+                                    * Structure is by default *native* byte order.
+                                    * LittleEndianStructure and BigEndianStructure allow you to specify byte order.
+                                    
+                                    </aside>
+                                </section>
 
-                                    <section>
-                                        <h2>Plan your attack</h2>
-                                        <h3>Define callbacks</h3>
+                                <section>
+                                    <h2>Tactics</h2>
+                                    <h4>Defining callbacks</h4>
 
-                                        <div class="lang"><strong>C (header)</strong></div>
-                                        <pre><code class="c" data-trim>
+                                    <div class="lang"><strong>C (header)</strong></div>
+                                    <pre><code class="c" data-trim>
 typedef rs_result rs_copy_cb(void *opaque, rs_long_t pos,
                              size_t *len, void **buf);
-                                        </code></pre>
+                                    </code></pre>
 
-                                        <div class="lang"><strong>Python</strong></div>
-                                        <pre><code class="python" data-trim>
+                                    <div class="lang"><strong>Python</strong></div>
+                                    <pre><code class="python" data-trim>
 callback = ctypes.CFUNCTYPE(ctypes.c_void_p, ctypes.c_int, ctypes.c_size_t,
                             ctypes.POINTER(Buffer))
-                                        </code></pre>
+                                    </code></pre>
 
-                                        <aside class="notes" data-markdown>
-                                        * Some C libraries use callbacks.
-                                        * You pass a pointer to a function and the library calls it.
-                                        * Callbacks are commonly used as error handlers, events, I/O.
-                                        * Ctypes allows you to create a decorator that declares your callback function prototype.
-                                        * You can then decorate a Python function with it.
-                                        * You can pass that function to a C library.
-                                        * The C library can then make calls into your Python function.
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * Some C libraries use callbacks.
+                                    * You pass a pointer to a function and the library calls it.
+                                    * Callbacks are commonly used as error handlers, events, I/O.
+                                    * ctypes allows you to create a decorator that declares your callback function prototype.
+                                    * You can then decorate a Python function with it.
+                                    * You can pass that function to a C library.
+                                    * The C library can then make calls into your Python function.
+                                    </aside>
+                                </section>
 
-                                    <section>
-                                        <h2>Plan your attack</h2>
-                                        <h3>Using callbacks</h3>
+                                <section>
+                                    <h2>Tactics</h2>
+                                    <h4>Using callbacks</h4>
 
-                                        <div class="lang"><strong>Python</strong></div>
-                                        <pre><code class="python" data-trim>
+                                    <div class="lang"><strong>Python</strong></div>
+                                    <pre><code class="python" data-trim>
 @callback
-def read_cb(ignored, pos, length, buff):
+def read_cb(ign, pos, length, buff):
     f.seek(pos)
     block = f.read(length)
     buff.next_in = ctypes.c_char_p(block)
@@ -549,20 +594,20 @@ def read_cb(ignored, pos, length, buff):
 # Second parameter is a state value to pass to our function, which
 # is not used.
 job = _librsync.rs_patch_begin(read_cb, None)
-                                        </code></pre>
+                                    </code></pre>
 
-                                        <aside class="notes" data-markdown>
-                                        * Decorate the Python function using the `CFUNCTYPE` decorator.
-                                        * Pass it to the library as prescribed.
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * Decorate the Python function using the `CFUNCTYPE` decorator.
+                                    * Pass it to the library as prescribed.
+                                    </aside>
+                                </section>
 
-                                    <section>
-                                        <h2>Plan your attack</h2>
-                                        <h3>Handling Errors</h3>
+                                <section>
+                                    <h2>Tactics</h2>
+                                    <h4>Error Handling</h4>
 
-                                        <div class="lang"><strong>Python</strong></div>
-                                        <pre><code class="python" data-trim>
+                                    <div class="lang"><strong>Python</strong></div>
+                                    <pre><code class="python" data-trim>
 class LibrsyncError(Exception):
     def __init__(self, r):
         super(LibrsyncError, self).__init__(
@@ -571,20 +616,79 @@ class LibrsyncError(Exception):
 r = _librsync.rs_job_iter(job, ctypes.byref(buff))
 if r not in (RS_DONE, RS_BLOCKED):
     raise LibrsyncError(r)
-                                        </code></pre>
+                                    </code></pre>
 
-                                        <aside class="notes" data-markdown>
-                                        * Errors are generally denoted by return values.
-                                        * 0 is (almost) universally success.
-                                        * Most libraries can convert a return code to an error message.
-                                        * Lends itself well to converting return codes to Python Exceptions.
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * Errors are generally denoted by return values.
+                                    * 0 is (almost) universally success.
+                                    * Most libraries can convert a return code to an error message.
+                                    * Lends itself well to converting return codes to Python Exceptions.
+                                    </aside>
+                                </section>
 
-                                    <section>
-                                        <h2>Plan your attack</h2>
-                                        <h3>Freeing memory</h3>
-                                        <pre><code class="python" data-trim>
+                                <section>
+                                    <h2>Tactics</h2>
+                                    <h4>Error Handling</h4>
+
+                                    <div class="lang"><strong>Python</strong></div>
+                                    <pre><code class="python" data-trim>
+class LibrsyncError(Exception):
+    def __init__(self, r):
+        super(LibrsyncError, self).__init__(
+              _librsync.rs_strerror(ctypes.c_int(r)))
+
+def errcheck(*success):
+    def check_raise(r, f, args):
+        if r not in success:
+            raise LibrsyncError(r)
+        return r
+    return check_raise
+
+_librsync.rs_job_iter.errcheck = errcheck(RS_DONE, RS_BLOCKED)
+
+_librsync.rs_job_iter(job, ctypes.byref(buff))
+                                    </code></pre>
+
+                                    <aside class="notes" data-markdown>
+                                    * Checking for errors is repetitive, ctypes allows you to automate it.
+                                    * Different functions may have different acceptable return values.
+                                    * The above allows you to easily customize this by function.
+                                    </aside>
+                                </section>
+
+                                <section>
+                                    <h2>Tactics</h2>
+                                    <h4>Error Handling</h4>
+
+                                    <div class="lang"><strong>Python</strong></div>
+                                    <pre><code class="python" data-trim>
+>>> import ctypes, ctypes.util
+>>> _c = ctypes.CDLL(ctypes.util.find_library('c'), use_errno=True)
+>>> _c.strerror.argtypes = [ctypes.c_int]
+>>> _c.strerror.restype = ctypes.c_char_p
+>>> _c.open('.', 1)
+-1
+>>> ctypes.get_errno()
+21
+>>> _c.perror('open')
+open: Is a directory
+21
+>>> _c.strerror(ctypes.get_errno())
+'Is a directory'
+
+                                    </code></pre>
+
+                                    <aside class="notes" data-markdown>
+                                    * Some libraries (libc) set the global errno to indicate errors.
+                                    * Ctypes handles this in a thread-safe manner.
+                                    * Notably Windows use a similar strategy (GetLastError()).
+                                    </aside>
+                                </section>
+
+                                <section>
+                                    <h2>Tactics</h2>
+                                    <h4>Freeing memory</h4>
+                                    <pre><code class="python" data-trim>
 sig = ctypes.c_void_p()
 try:
     job = _librsync.rs_loadsig_begin(byref(sig))
@@ -595,34 +699,34 @@ try:
     r = _librsync.rs_build_hash_table(sig)
     if r != RS_DONE:
         raise LibrsyncException(r)
-    ...
+...
 finally:
     _librsync.rs_free_sumset(sig)
-                                        </code></pre>
+                                    </code></pre>
 
-                                        <aside class="notes" data-markdown>
-                                        * No GC in C!
-                                        * Allocations made by ctypes use reference counting.
-                                        * Allocations made by C functions do NOT!
-                                        * The code above makes explicit and implicit allocations.
-                                        * Explicit
-                                            * You must be dilligent about freeing what you allocate.
-                                            * In this example, job is allocated implicitly by calling `rs_loadsig_begin()`.
-                                            * It must be freed when we are done with it!
-                                        * Implicit.
-                                            * You must pay attention to allocations made by the library.
-                                            * In this example, sig is a pointer we allocate, and pass by reference.
-                                            * The libary performs an allocation and fills the pointer to it.
-                                            * We must free the allocated structure when it is no longer needed.
-                                        * Finally is your friend!
-                                        * When an error occurs and you raise an exception, memory must still be freed.
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * No GC in C!
+                                    * Allocations made by ctypes use reference counting.
+                                    * Allocations made by C functions do NOT!
+                                    * The code above makes explicit and implicit allocations.
+                                    * Explicit
+                                        * You must be dilligent about freeing what you allocate.
+                                        * In this example, job is allocated implicitly by calling `rs_loadsig_begin()`.
+                                        * It must be freed when we are done with it!
+                                    * Implicit.
+                                        * You must pay attention to allocations made by the library.
+                                        * In this example, sig is a pointer we allocate, and pass by reference.
+                                        * The libary performs an allocation and fills the pointer to it.
+                                        * We must free the allocated structure when it is no longer needed.
+                                    * Finally is your friend!
+                                    * When an error occurs and you raise an exception, memory must still be freed.
+                                    </aside>
+                                </section>
 
-                                    <section>
-                                        <h2>Plan your attack</h2>
-                                        <h3>Strings and buffers</h3>
-                                        <pre><code class="python" data-trim>
+                                <section>
+                                    <h2>Tactics</h2>
+                                    <h4>Using Strings &amp; Buffers</h4>
+                                    <pre><code class="python" data-trim>
 o = StringIO()
 out = ctypes.create_string_buffer(RS_JOB_BLOCKSIZE)
 
@@ -637,27 +741,110 @@ while True:
     buff.avail_out = ctypes.c_size_t(RS_JOB_BLOCKSIZE)
     r = _librsync.rs_job_iter(job, ctypes.byref(buff))
     o.write(out.raw[:RS_JOB_BLOCKSIZE - buff.avail_out])
-                                        </code></pre>
+                                    </code></pre>
 
-                                        <aside class="notes" data-markdown>
-                                        * In C strings are char arrays.
-                                        * They are represented by a pointer to the head.
-                                        * You must be aware of their length.
-                                        * You usually must inform the C library of the length.
-                                        * This is done to avoid overruns.
-                                        * Here we use strings in two capacities.
-                                        * Input
-                                            * The string `block` is handled by getting `c_char_p`, the pointer to the string buffer.
-                                        * Output
-                                            * `out` is a string buffer, which can be accessed by Python via `raw`.
-                                            * `buff.avail_out` informs librsync how large our allocated buffer is.
-                                            * Upon return, librsync tells us how much data to expect via `buff.avail_out`.
-                                        </aside>
-                                    </section>
+                                    <aside class="notes" data-markdown>
+                                    * In C strings are char arrays.
+                                    * They are represented by a pointer to the head.
+                                    * You must be aware of their length.
+                                    * You usually must inform the C library of the length.
+                                    * This is done to avoid overruns.
+                                    * Here we use strings in two capacities.
+                                    * Input
+                                        * The string `block` is handled by getting `c_char_p`, the pointer to the string buffer.
+                                    * Output
+                                        * `out` is a string buffer, which can be accessed by Python via `raw`.
+                                        * `buff.avail_out` informs librsync how large our allocated buffer is.
+                                        * Upon return, librsync tells us how much data to expect via `buff.avail_out`.
+                                    </aside>
+                                </section>
 
-				</section>
+                                <section>
+                                    <h2>BOOM!</h2>
+                                    <h4>When things don't go as planned</h4>
 
-                            </section>
+                                    <div class="wrap">
+                                        <div class="left_col">
+                                            <div class="lang"><strong>Fedora</strong></div>
+                                            <pre><code class="sh" data-trim>
+$ sudo yum install gdb
+$ sudo debuginfo-install python
+$ sudo debuginfo-install librsync
+                                            </code></pre>
+                                        </div>
+                                        <div class="right_col">
+                                            <ul>
+                                                <li class="fragment">GDB is great for debugging Python &amp; ctypes.</li>
+                                                <li class="fragment">Make sure you have the symbols installed for Python and the target.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+                                    <aside class="notes" data-markdown>
+                                    * The Python ctypes module docs are excellent.
+                                    </aside>
+                                </section>
+
+                                <section>
+                                    <h2>BOOM!</h2>
+                                    <h4>Debugging with GDB</h4>
+
+                                    <div class="lang"><strong>Python (segfault.py)</strong></div>
+                                    <pre><code class="python" data-trim>
+import ctypes
+import ctypes.util
+
+_librsync = ctypes.cdll.LoadLibrary(ctypes.util.find_library('rsync'))
+
+_librsync.rs_job_free(0)
+                                    </code></pre>
+
+                                    <div class="lang"><strong>GDB</strong></div>
+                                    <pre><code class="sh" data-trim>
+$ gdb -ex r --args python segfault.py
+                                    </code></pre>
+
+                                    <aside class="notes" data-markdown>
+                                    * This is a very contrived failing program.
+                                    * NULL pointer, which will cause a segmentation fault.
+                                    * Your problem will likely be much less obvious.
+                                    * But debugging will be the same.
+                                    </aside>
+                                </section>
+
+                                <section>
+                                    <h2>BOOM!</h2>
+                                    <h4>Debugging with GDB</h4>
+
+                                    <div class="lang"><strong>Python (segfault.py)</strong></div>
+                                    <pre><code class="gdb" data-trim>
+Program received signal SIGSEGV, Segmentation fault.
+rs_job_free (job=0x0) at job.c:87
+87          if (job->scoop_buf)
+(gdb) bt
+#0  rs_job_free (job=0x0) at job.c:87
+#1  0x0000003f4b605ed8 in ffi_call_unix64 () from /lib64/libffi.so.5
+#2  0x0000003f4b6058e0 in ffi_call () from /lib64/libffi.so.5
+#3  0x00007ffff0b02bf0 in _call_function_pointer (argcount=1, resmem=0x7fffffffd2f0, restype=<optimized out>, atypes=<optimized out>, 
+    avalues=0x7fffffffd2d0, pProc=0x3f48e04a80 <rs_job_free>, flags=4353)
+    at /usr/src/debug/Python-2.7.3/Modules/_ctypes/callproc.c:827
+                                    </code></pre>
+
+                                    <aside class="notes" data-markdown>
+                                    * There are SEVEN calls in the stack between Python and `rs_job_free()`!
+                                    </aside>
+                                </section>
+
+                                <section>
+                                    <h2>More information</h2>
+
+                                    <a href="http://docs.python.org/2/library/ctypes.html">http://docs.python.org/2/library/ctypes.html</a>
+
+                                    <aside class="notes" data-markdown>
+                                    * The Python ctypes module docs are excellent.
+                                    </aside>
+                                </section>
 
 			</div>
 
